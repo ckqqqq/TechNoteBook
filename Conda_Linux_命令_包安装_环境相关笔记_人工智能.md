@@ -251,6 +251,10 @@ Installing collected packages: pyasn1, zipp, rsa, pyasn1-modules, oauthlib, mult
 
 ## Git的使用教程
 
+这个沙盒可以使用、练习git
+
+[Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
+
 ```bash
 git add Article1
 #加入暂存区域
@@ -329,6 +333,83 @@ vpn有问题换fastgithub
 ```
 
 
+
+
+
+```bash
+
+git checkout -b XXX #新建并且转移到这个分支上
+git checkout XXX
+git merge XXX #将XXX分支合并到本分支
+#记得分支合并的前提是分支已经提交
+#更高级的命令cherry-pick，合并多个节点
+#
+git cherry-pick C1 C2
+#将C1 C2合并到当前节点
+#这个命令的主要用途为biru有多个分支，我们可以挑其中部分节点和并到当前节点（当然还是一个一个合并比较好）
+
+#如果将自己合并到对面就是git rebase 对面分支
+```
+
+cherry-pick![image-20220710223203830](https://s2.loli.net/2022/07/10/fWpCadLDOSRZni4.png)
+
+![image-20220710223900362](https://s2.loli.net/2022/07/10/QMwLiWalZjdOP7c.png)
+
+HEAD指针
+
+![image-20220710191656529](../../AppData/Roaming/Typora/typora-user-images/image-20220710191656529.png)
+
+![image-20220710192159935](https://s2.loli.net/2022/07/10/3bisNQx4ye1dYkR.png)
+
+```bash
+#相对引用
+head 就是当前的指针，一般指向分支名
+如何 
+先 
+git log
+#checkout 指针转移命令
+git checkout 某个哈希值就可以到达某个节点（哈希/分支名）
+某个节点的父节点
+git checkout HEAD^
+git checkout 某个节点的父节点（XX^）
+```
+
+![image-20220710215900557](https://s2.loli.net/2022/07/10/jgLKbki3l82Mc94.png)
+
+```
+#转变分支
+git branch -f 分支\节点名 某个位置\节点
+```
+
+## 撤销变更
+
+在 Git 里撤销变更的方法很多。和提交一样，撤销变更由底层部分（暂存区的独立文件或者片段）和上层部分（变更到底是通过哪种方式被撤销的）组成。我们这个应用主要关注的是后者。
+
+主要有两种方法用来撤销变更 —— 一是 `git reset`，还有就是 `git revert`。接下来咱们逐个进行讲解。
+
+```bash
+# 简单的说reset 可以应用于本地 revert能应用于远程
+git reset HEAD~1#向上移动一个
+git revert HEAD #向别人分享我们的reset
+```
+
+原来
+
+![image-20220710221734738](https://s2.loli.net/2022/07/10/ymnKo3gdbC6DsVU.png)
+
+```bash
+git reset HEAD~1
+#对远程进行操作
+git checkout C2
+git revert HEAD
+git push 
+```
+
+
+
+目标
+
+![image-20220710221703278](https://s2.loli.net/2022/07/10/krGDPEqCWu3eA89.png)
 
 ```
 echo "# SpringBoot-Vue-Mybatis-Mysql_list_view" >> README.md
