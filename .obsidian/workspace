@@ -1,0 +1,153 @@
+{
+  "main": {
+    "id": "e1e66141e6071370",
+    "type": "split",
+    "children": [
+      {
+        "id": "ff4b918accf2fbb5",
+        "type": "leaf",
+        "dimension": 19.11639762107052,
+        "state": {
+          "type": "localgraph",
+          "state": {
+            "file": "Research_2022_Keqi_Chen.md",
+            "options": {
+              "collapse-filter": true,
+              "search": "",
+              "localJumps": 1,
+              "localBacklinks": true,
+              "localForelinks": true,
+              "localInterlinks": false,
+              "showTags": false,
+              "showAttachments": false,
+              "hideUnresolved": false,
+              "collapse-color-groups": true,
+              "colorGroups": [],
+              "collapse-display": true,
+              "showArrow": false,
+              "textFadeMultiplier": 0,
+              "nodeSizeMultiplier": 1,
+              "lineSizeMultiplier": 1,
+              "collapse-forces": true,
+              "centerStrength": 0.518713248970312,
+              "repelStrength": 10,
+              "linkStrength": 1,
+              "linkDistance": 250,
+              "scale": 1,
+              "close": true
+            }
+          }
+        }
+      },
+      {
+        "id": "19376f2ea12182be",
+        "type": "leaf",
+        "dimension": 47.74851316907392,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Research_2022_Keqi_Chen.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "eb52b4ea78de48a3",
+        "type": "leaf",
+        "dimension": 33.135089209855565,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Typora_标题模板/共情对话系统调研.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e454776c1015c533",
+    "type": "split",
+    "children": [
+      {
+        "id": "f14202432e198e9e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e16c3fd4154a953b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "a0134fc37036c74d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "539db7463939ca96",
+    "type": "split",
+    "children": [
+      {
+        "id": "ba0d2a3a509521bb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "07d6b10313a6d013",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Research_2022_Keqi_Chen.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "ff4b918accf2fbb5",
+  "lastOpenFiles": [
+    "Research_2022_Keqi_Chen.md",
+    "共情对话系统调研/任务一：具有共情能力的对话生成-调研报告.md",
+    "Typora_标题模板/共情对话系统调研.md",
+    "Research_2022_Keqi_Chen 1.md",
+    "共情对话系统调研/对话系统综述.md",
+    "openstack安装和github换源.md",
+    "Research_2022_Keqi_Chen.pdf",
+    "1.md",
+    "Articles.pdf",
+    "网络安全.md"
+  ]
+}
