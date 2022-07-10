@@ -266,16 +266,69 @@ git push origin master
 
 注意github新建仓库时尽量不要用模板
 
-```
+```bash
 #github教程
 echo "# CSDN" >> README.md
 git init
+#告诉git 开始对这些文件进行跟踪
 git add README.md
+#提交到暂时存储区，同时加上massage
 git commit -m "first commit"
+#这是一个改名操作，将当前分支名改名为main
 git branch -M main
+#这是手动的为你的远程仓库的地址在本地起一个别名origin
 git remote add origin https://github.com/ckqqqq/CSDN.git
+#-upstream 将本地的main中的流上传到远程的origin（github上的远程也将命名为main）
 git push -u origin main
+
+#git 设置全局email
+git config --global user.email "邮箱"
+git config --global user.name "名字"
+#git 设置本地email
+git config  user.email "邮箱"
+git config  user.name "名字"
+
 ```
+
+查看变更
+
+```bash
+#查看提交到占存区的记录
+git log
+通过git checkout命令，我们可以切换到某个快照。
+git checkout c9053865e9dff393fd2f7a92a18f9bd7f2caa7fa
+#通过git show命令，我们可以显示某个快照的所有代码变更。
+git show c9053865e9dff393fd2f7a92a18f9bd7f2caa7fa
+```
+
+![image-20220710170758816](https://s2.loli.net/2022/07/10/5eCsxFmcRQXyAB3.png)
+
+设置git为中文
+
+![image-20220710170924814](https://s2.loli.net/2022/07/10/4hFiZ1cs5lGz86t.png)
+
+```bash
+git config --global core.quotepath false 
+git config --global i18n.commitencoding utf-8
+git config --global i18n.commitencoding utf-8
+git config --global i18n.logoutputencoding utf-8
+export LESSCHARSET=utf-8
+https://blog.csdn.net/weixin_44797327/article/details/123715751
+```
+
+OpenSSL问题
+
+![image-20220710171416538](../../AppData/Roaming/Typora/typora-user-images/image-20220710171416538.png)
+
+```bash
+#问题一
+git config --global http.sslVerify "false"
+#问题二
+vpn有问题换fastgithub
+
+```
+
+
 
 ```
 echo "# SpringBoot-Vue-Mybatis-Mysql_list_view" >> README.md
