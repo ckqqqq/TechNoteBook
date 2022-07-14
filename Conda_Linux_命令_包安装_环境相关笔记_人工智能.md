@@ -251,6 +251,8 @@ Installing collected packages: pyasn1, zipp, rsa, pyasn1-modules, oauthlib, mult
 
 ## Git的使用教程
 
+[Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
+
 这个沙盒可以使用、练习git
 
 [Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
@@ -337,17 +339,19 @@ vpn有问题换fastgithub
 
 
 ```bash
-
 git checkout -b XXX #新建并且转移到这个分支上
 git checkout XXX
 git merge XXX #将XXX分支合并到本分支
 #记得分支合并的前提是分支已经提交
 #更高级的命令cherry-pick，合并多个节点
-#
+# 这个命令很猛，可以单独选取节点合并到当前值
+
 git cherry-pick C1 C2
 #将C1 C2合并到当前节点
 #这个命令的主要用途为biru有多个分支，我们可以挑其中部分节点和并到当前节点（当然还是一个一个合并比较好）
-
+#cherry-pick最牛B之处在与，他可以选取单独某个节点与当前分支合并，比如你一个分支有很多调试代码，你可以使用一个没有print语句的节点和当前分支合并
+git checkout 某个分支（注意是分支而不是节点）
+git cherry-pick 某个你需要的节点
 #如果将自己合并到对面就是git rebase 对面分支
 ```
 
@@ -410,6 +414,188 @@ git push
 目标
 
 ![image-20220710221703278](https://s2.loli.net/2022/07/10/krGDPEqCWu3eA89.png)
+
+## 远程操作
+
+###  远程的本质
+
+远程的本质就是另一台计算机
+
+直接了当地讲，`main` 和 `o/main` 的关联关系就是由分支的“remote tracking”属性决定的。**`main` 被设定为跟踪 `o/main`** —— 这意味着为 `main` 分支指定了推送的目的地以及拉取后合并的目标。
+
+你可能想知道 `main` 分支上这个属性是怎么被设定的，你并没有用任何命令指定过这个属性呀！好吧, 当你克隆仓库的时候, Git 就自动帮你把这个属性设置好了。
+
+当你克隆时, Git 会为远程仓库中的每个分支在本地仓库中创建一个远程分支（比如 `o/main`）。然后再创建一个跟踪远程仓库中活动分支的本地分支，默认情况下这个本地分支会被命名为 `main`。
+
+克隆完成后，你会得到一个本地分支（如果没有这个本地分支的话，你的目录就是“空白”的），但是可以查看远程仓库中所有的分支（如果你好奇心很强的话）。这样做对于本地仓库和远程仓库来说，都是最佳选择。
+
+这也解释了为什么会在克隆的时候会看到下面的输出：
+
+```
+local branch "main" set to track remote branch "o/main"
+```
+
+#### 问题一：是否可以设定本地其他分支跟踪远程main
+
+可以
+
+### 第二种方法
+
+另一种设置远程追踪分支的方法就是使用：`git branch -u` 命令，执行：
+
+```
+git branch -u o/main foo
+```
+
+这样 `foo` 就会跟踪 `o/main` 了。如果当前就在 foo 分支上, 还可以省略 foo：
+
+```
+git branch -u o/main 本地分支名
+或者 
+git checkout -b o/main 本地分支名
+```
+
+[Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
+
+其实git clone 就是多个命令的拆解
+
+git init
+
+git fetch 
+
+git checkout -b o/main main
+
+### 为什么有 `o/`？
+
+你可能想问这些远程分支的前面的 `o/` 是什么意思呢？好吧, 远程分支有一个命名规范 —— 它们的格式是:
+
+- `<remote name>/<branch name>`
+
+因此，如果你看到一个名为 `o/main` 的分支，那么这个分支就叫 `main`，远程仓库的名称就是 `o`。
+
+大多数的开发人员会将它们主要的远程仓库命名为 `origin`，并不是 `o`。这是因为当你用 `git clone` 某个仓库时，Git 已经帮你把远程仓库的名称设置为 `origin` 了
+
+当你使用真正的 Git 时, 你的远程仓库默认为 `origin`!
+
+说了这么多，让我们看看实例。
+
+```bash
+git check 远程分支#是无法直接提交的
+git fetch
+#fetch的作用 将本地远程分支（origin）的数据更新
+#fetch做的事情-更新本地的远程分支
+git fetch 完成了仅有的但是很重要的两步:
+从远程仓库下载本地仓库中缺失的提交记录
+更新远程分支指针(如 o/main)
+git fetch 实际上将本地仓库中的远程分支更新成了远程仓库相应分支最新的状态。
+如果你还记得上一节课程中我们说过的，远程分支反映了远程仓库在你最后一次与它通信时的状态，git fetch 就是你与远程仓库通信的方式了！希望我说的够明白了，你已经了解 git fetch 与远程分支之间的关系了吧。
+git fetch 通常通过互联网（使用 http:// 或 git:// 协议) 与远程仓库通信。
+#fetch不会做的事情-修改你磁盘上的文件
+git fetch 不会做的事
+git fetch 并不会改变你本地仓库的状态。它不会更新你的 main 分支，也不会修改你磁盘上的文件。
+理解这一点很重要，因为许多开发人员误以为执行了 git fetch 以后，他们本地仓库就与远程仓库同步了。它可能已经将进行这一操作所需的所有数据都下载了下来，但是并没有修改你本地的文件。我们在后面的课程中将会讲解能完成该操作的命令 :D
+所以, 你可以将 git fetch 的理解为单纯的下载操作。
+```
+
+![image-20220710230835371](https://s2.loli.net/2022/07/10/KMUu92BcJRmAriP.png)
+
+fetch
+
+![image-20220710231328563](https://s2.loli.net/2022/07/10/rDEKAYGgmXV6JlR.png)
+
+git pull
+
+```bash
+git pull
+#注意 git pull 就是git fetch 和 git merge o/main的缩写。一图胜千言
+先fetch下载，再merge，两条命令合二为一就是pull
+
+```
+
+![image-20220710231630637](https://s2.loli.net/2022/07/10/Mt86LXJi5TH9Svk.png)
+
+git fakeTeamwork
+
+```bash
+#假装提交
+git fakeTeamwork
+相当于在github远程的仓库commit ，远程的仓库会有一个提交记录（注意本地的O/main仓库还是没有实时更新哦，还需要一个fetch）
+```
+
+git push
+
+```
+将本地和远程同一个分支，远程仓库没有的节点提交上去
+```
+
+**所以需要先pull 再push！**
+
+综合介绍
+
+```bash
+# pull 是 fetch 和merge 的缩写
+# pull -rebase 是 fetch 和 rebase的缩写（合并到别人上去）
+git fetch 
+git merge o/main 
+git push
+等价于
+git pull
+git push
+#不推荐这个hhh
+而基于rebase的流派
+git fetch
+git rebase o/main
+git push
+等价于
+git pull -rebase
+git push
+```
+
+这个是merge流的远程（right）
+
+![image-20220710235446370](https://s2.loli.net/2022/07/10/rACamDyqGbT5JF6.png)
+
+这个是rebase流的远程
+
+![image-20220710235301786](https://s2.loli.net/2022/07/10/BxkwTqfSszDeLdV.png)
+
+
+
+远程服务器拒绝
+
+## 远程服务器拒绝!(Remote Rejected)-原因main被锁定了
+
+如果你是在一个大的合作团队中工作, 很可能是main被锁定了, 需要一些Pull Request流程来合并修改。如果你直接提交(commit)到本地main, 然后试图推送(push)修改, 你将会收到这样类似的信息:
+
+```bash
+! [远程服务器拒绝] main -> main (TF402455: 不允许推送(push)这个分支; 你必须使用pull request来更新这个分支.)
+```
+
+远程服务器拒绝直接推送(push)提交到main, 因为策略配置要求 pull requests 来提交更新.
+
+你应该按照流程,新建一个分支, 推送(push)这个分支并申请pull request,但是你忘记并直接提交给了main.现在你卡住并且无法推送你的更新.
+
+我新建了一个分支feature 然后将main分支回退，push这个分支就行
+
+![image-20220711000510994](https://s2.loli.net/2022/07/11/sEZAP5mDnazBQfy.png)
+
+## 解决办法
+
+新建一个分支feature, 推送到远程服务器. 然后reset你的main分支和远程服务器保持一致, 否则下次你pull并且他人的提交和你冲突的时候就会有问题.
+
+
+
+## merge 和 rebase的不同
+
+merge
+
+![image-20220711003348698](https://s2.loli.net/2022/07/11/BUcCAZx89t1v5iF.png)
+
+rebase
+
+![image-20220711003439323](https://s2.loli.net/2022/07/11/cfpD7gtVs2FQjIu.png)
+
+
 
 ```
 echo "# SpringBoot-Vue-Mybatis-Mysql_list_view" >> README.md
@@ -508,7 +694,15 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCYPxH7+dG7Y+pbTAiEoyy48QbHLWVKF0GmRI95tMEB
 
 ![](C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20220522193218902.png)
 
-## Pycharm各种操作  
+git 报错
+
+warning: in the working copy of 'vectors/glove.6B.50d.txt', LF will be replaced by CRLF the next time Git touches it
+
+[(70条消息) Git中的“LF will be replaced by CRLF”警告详解_易生一世的博客-CSDN博客](https://blog.csdn.net/taiyangdao/article/details/78629107)
+
+小问题不用管
+
+## Pycharm各种操作
 
 ### 快速选择多个按键
 
@@ -678,7 +872,6 @@ Pycharm远程映射
 [【ubuntu】torch.cuda.is_available()结果为false - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/344785624)
 
 ```python
-
 import torch
 print(torch.cuda.is_available)
 
@@ -1012,7 +1205,6 @@ pandoc -t docx "D:\Cache\PictureCache\在linux上安装openstack.md" --reference
 ### md 转word
 
 ```bash
-
 pandoc -o custom-reference.docx --print-default-data-file reference.docx
 ```
 
@@ -2118,7 +2310,6 @@ sudo apt-get install openssh-server
 ### 删除整个ssh
 
 ```bash
-
 sudo stop ssh
 stop: Unable to connect to Upstart: Failed to connect to socket /com/ubuntu/upstart: Connection refused
 qiker@ubuntu:~ $ ps -e|grep ssh

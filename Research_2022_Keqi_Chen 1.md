@@ -1028,7 +1028,7 @@ https://github.com/npubird/KnowledgeGraphCourse
 
 # 组会笔记
 
-## 每周周记
+## 放假前每周周记 
 
 | 工作整体计划 | 应填写最近工作的整体目标、工作内容和时间安排     需列出每一项工作内容完成的时间节点，即Milestone。 | 工作整体计划完成情况 |      | 应填写到目前为止已经完成的全部工作，须对照左侧工作计划逐项填写。如未完成请估计完成的百分比。 |
 | ------------ | ------------------------------------------------------------ | -------------------- | ---- | ------------------------------------------------------------ |
@@ -1087,6 +1087,27 @@ https://github.com/npubird/KnowledgeGraphCourse
 |                  | 整理笔记                                                     |                            | 复现论文MISC                                                 |
 |                  | 李沐课程                                                     |                            | 复现论文CEM                                                  |
 |                  |                                                              |                            | 动手构建共情对话系统，先画一个框架图                         |
+
+## 7.6~7.13
+
+
+
+| 本周工作整体计划 | 应填写最近工作的整体目标、工作内容和时间安排     需列出每一项工作内容完成的时间节点，即Milestone。 | 下一周工作整体计划完成情况 | 应填写到目前为止已经完成的全部工作，须对照左侧工作计划逐项填写。如未完成请估计完成的百分比。 |
+| ---------------- | ------------------------------------------------------------ | -------------------------- | ------------------------------------------------------------ |
+|                  | 回去重新读了CEM: Commonsense-aware Empathetic Response Generation及其引用的论文，这两天在服务器上复现了其实验。精读了其代码并在中加了注释。 | 30%                        | 复现实验：Improving Empathetic Response Generation by Recognizing Emotion Cause in Conversations |
+|                  | 整理我的调研报告笔记，加了Improving Empathetic Response Generation by Recognizing Emotion Cause in Conversations 和CEM这两篇论文的精读笔记。 |                            | 复现实验：[thu-coai/Emotional-Support-Conversation: Data and codes for ACL 2021 paper: Towards Emotional Support Dialog Systems (github.com)](https://github.com/thu-coai/Emotional-Support-Conversation) |
+|                  | 李沐课程，目前差不多学了60%                                  |                            | 动手构建共情对话系统，感觉基本确定是encoder-decoder结构，当然模块细节还需要和练学长商讨 |
+|                  | 发现了共情对话领域最新的论文集资源[Sahandfer/EMPaper: This is a repository for sharing papers in the field of empathetic conversational AI. The related source code for each paper is linked if available. (github.com)](https://github.com/Sahandfer/EMPaper)这里大多是今年共情对话领域的论文，比较新 |                            | 未来几周读论文主要就是从左边这个链接中挑选，精读的笔记补充到调研报告中 |
+|                  | ![](https://s2.loli.net/2022/07/13/EKLPAYSIMWOt2Jv.png)      |                            | 准备PPT                                                      |
+|                  | 其实也有2020年之前的论文资源，仅供参考[TissueC/Empathy-NLP-Papers: A paper list about empathetic dialogue system (github.com)](https://github.com/TissueC/Empathy-NLP-Papers) |                            |                                                              |
+
+
+
+PS：练学长补充 评测方法PPL （生成多样性）
+
+![image-20220714114926646](https://s2.loli.net/2022/07/14/tXq5aeMsW9uYHvy.png)
+
+
 
 ## 王学长讲英文论文写作中注意的事项
 
@@ -1353,6 +1374,74 @@ tapfog
 会有一个申诉机制，评审专家的申诉hhh
 
 ![image-20220616122147623](https://s2.loli.net/2022/07/05/sIvQLmYdaK9iPyR.png)
+
+## 老彭讲ＡＤ－ｎｅｒｄ
+
+AD-NeRF好像是一个虚拟人表情生成方案，根据音频生成人的表情方案。
+
+RGBR
+
+## 王学长讲基于HAMD访谈的抑郁检测
+
+CMDC 北京安定医院
+
+EATC 回龙观医院
+
+王学长的大概思路
+
+![image-20220714111352651](https://s2.loli.net/2022/07/14/4iKItshXe1v57g9.png)
+
+![image-20220714110411210](https://s2.loli.net/2022/07/14/yFz5I1bxctonZeh.png)
+
+![image-20220714110718344](https://s2.loli.net/2022/07/14/r8QoufsIkeWnKzE.png)
+
+![image-20220714110852809](https://s2.loli.net/2022/07/14/YjXxNS92QzABp81.png)
+
+![image-20220714111100917](https://s2.loli.net/2022/07/14/mYtZVp2nzbwq9hg.png)
+
+![image-20220714111121023](https://s2.loli.net/2022/07/14/pIE257eaAf4vVqF.png)
+
+对文本切分说话人，人工转录96% 自动转录93%
+
+其他同学可以做hhh，应该也可以，
+
+![image-20220714111228115](https://s2.loli.net/2022/07/14/RvOfXeYTsANEVSd.png)
+
+期刊论文和会议论文有一个不同的点，期刊要求论证充分，把一个小的点充分表达，逻辑严谨，会议论文则侧重体系化？
+
+建立数据集，实施如何建立数据集，建立标准，评估如何建立数据集的流程，
+
+有一篇论文讲了文本中的“嗯” “啊” 个数，抑郁症人群和非抑郁症人群有所不同，频次音质有所不同，可能有用，老师提到还是要思考周全，hhh，
+
+![image-20220714112110503](https://s2.loli.net/2022/07/14/VyvntQdEKDpUOlS.png)
+
+## 练学长讲评测对话系统
+
+![image-20220714113045918](https://s2.loli.net/2022/07/14/ahygFkI1S5RjCUV.png)
+
+PPL（）：生成回复多样性（N-distinct） 通用回复占比  
+
+情感分类：准确性
+
+安全性：危险对话出现的频次 危机应对（比较少）
+
+人工评测：论文模型与baseline模型主观比较 A/B 打分机制
+
+模拟器：
+
+![image-20220714113134353](https://s2.loli.net/2022/07/14/r6YdlSCFfHkUwPN.png)
+
+评价训练系统，和调研报告里面的有重复，‘
+
+困惑
+
+使用神经网络训练一个评价模型
+
+![image-20220714113337132](https://s2.loli.net/2022/07/14/5NEH6pPoYDJMTfx.png)
+
+![image-20220714113355867](https://s2.loli.net/2022/07/14/VcfJeXngOEHAzQL.png)
+
+
 
 # 写论文笔记
 
